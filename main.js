@@ -19,7 +19,7 @@ const total = slider.children.length;
 let interval;
 
 function showSlide(i) {
-  index = (i + total) % total; 
+  index = (i + total) % total;
   slider.style.transform = `translateX(${-index * 100}%)`;
 
   dots.forEach((dot, dIndex) => {
@@ -31,7 +31,7 @@ function showSlide(i) {
 function startAutoSlide() {
   interval = setInterval(() => {
     if (index === total - 1) {
-      index = 0; 
+      index = 0;
     } else {
       index++;
     }
@@ -100,3 +100,26 @@ slider.addEventListener("touchend", (e) => {
 showSlide(index);
 startAutoSlide();
 // slider section ended
+
+// scroll top button started
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+// show/hide button on scroll
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    scrollBtn.classList.remove("opacity-0", "pointer-events-none");
+    scrollBtn.classList.add("opacity-70");
+  } else {
+    scrollBtn.classList.add("opacity-0", "pointer-events-none");
+    scrollBtn.classList.remove("opacity-70");
+  }
+});
+
+// scroll to top smoothly
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+// scroll top button ended
