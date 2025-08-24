@@ -123,3 +123,12 @@ scrollBtn.addEventListener("click", () => {
   });
 });
 // scroll top button ended
+
+// contact form started
+document.querySelector('#contact-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.elements.name.value = '';
+  e.target.elements.email.value = '';
+  e.target.elements.message.value = '';
+});
+// contact form ended
